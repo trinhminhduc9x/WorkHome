@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="429c9036-c3d3-4c9c-8ed6-70c0326d0192" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/controller/MainCandidate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/controller/MainCandidateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/model/Candidate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/view/ViewCandidate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-module 2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/02-module 2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8/Cylinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8/CylinderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8/calculate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8/calculateTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8/fizzBuzz.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Aem11bSh5yIrog9G22UxpN8tTV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Mywork.Ss1.controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ViewCandidate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Mywork.Ss1.view.ViewCandidate" />
+      <module name="02-module 2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Mywork.Ss1.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ViewCandidate" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="429c9036-c3d3-4c9c-8ed6-70c0326d0192" name="Changes" comment="" />
+      <created>1655378208913</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655378208913</updated>
+      <workItem from="1655378210188" duration="601000" />
+      <workItem from="1655396767991" duration="2539000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
