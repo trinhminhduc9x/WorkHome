@@ -2,19 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="429c9036-c3d3-4c9c-8ed6-70c0326d0192" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/controller/MainCandidate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/controller/MainCandidateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/model/Candidate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Mywork/Ss1/view/ViewCandidate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-module 2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/02-module 2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8/Cylinder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8/CylinderTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8/calculate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8/calculateTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8/fizzBuzz.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyWoik/model/MyAbstractList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyWoik/service/MyList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/controller/MainStudent/MainOficer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/controller/MainStudent/MainStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/model/Oficer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/model/OficerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/model/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/model/StudentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/service/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/service/IServiceOficer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/service/impl/IOficerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/service/impl/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/view/OficerView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/view/StudentView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/02-module 2/Mywork/Ss1/controller/MainCandidate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/02-module 2/Mywork/Ss1/controller/MainCandidate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tai lieu/~$iTapHUongDoiTuong (1).docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
@@ -45,20 +51,80 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="MyWoik.controller" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="demo.model" />
       <recent name="Mywork.Ss1.controller" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="demo.service.impl" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.OficerView">
+    <configuration name="OficerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.model.OficerTest" />
+      <module name="02-module 2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OficerView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.view.OficerView" />
+      <module name="02-module 2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.model.StudentTest" />
+      <module name="02-module 2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.view.StudentView" />
+      <module name="02-module 2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ViewCandidate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Mywork.Ss1.view.ViewCandidate" />
       <module name="02-module 2" />
@@ -74,6 +140,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OficerView" />
+        <item itemvalue="Application.StudentView" />
+        <item itemvalue="Application.OficerTest" />
+        <item itemvalue="Application.StudentTest" />
         <item itemvalue="Application.ViewCandidate" />
       </list>
     </recent_temporary>
@@ -88,6 +158,12 @@
       <updated>1655378208913</updated>
       <workItem from="1655378210188" duration="601000" />
       <workItem from="1655396767991" duration="2539000" />
+      <workItem from="1655473599403" duration="5126000" />
+      <workItem from="1655521954046" duration="378000" />
+      <workItem from="1655541647522" duration="1097000" />
+      <workItem from="1655557326485" duration="4349000" />
+      <workItem from="1655565710079" duration="5838000" />
+      <workItem from="1655620661299" duration="4835000" />
     </task>
     <servers />
   </component>
@@ -104,5 +180,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
