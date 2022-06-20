@@ -11,12 +11,12 @@ public class StudentService implements IService {
     Scanner scanner = new Scanner(System.in);
     private static final ArrayList<Student> studentsList = new ArrayList<Student>();
 
-//    static {
-//        studentsList.add(new Student(2, "c", "Asd", true, "asd", "b"));
-//        studentsList.add(new Student(1, "a", "Asd", true, "asd", "a"));
-//        studentsList.add(new Student(3, "e", "Asd", true, "asd", "c"));
-//        studentsList.add(new Student(4, "d", "Asd", true, "asd", "d"));
-//    }
+    static {
+        studentsList.add(new Student(2, "c", "Asd", true, "asd", "b"));
+        studentsList.add(new Student(1, "a", "Asd", true, "asd", "a"));
+        studentsList.add(new Student(3, "e", "Asd", true, "asd", "c"));
+        studentsList.add(new Student(4, "d", "Asd", true, "asd", "d"));
+    }
 
     @Override
     public void dispaly() {
@@ -96,16 +96,22 @@ public class StudentService implements IService {
         dispaly();
         System.out.println(" nhap hoc vien can tim");
         String s = scanner.nextLine();
-        for (int i = 0; i < studentsList.size(); i++) {
-            if (s.equals(studentsList.get(i).getHoTen())) {
-                System.out.println(studentsList.get(i));
-                break;
+        if (s instanceof String) {
+            for (int i = 0; i < studentsList.size(); i++) {
+                if (s.equals(studentsList.get(i).getHoTen())) {
+                    System.out.println(studentsList.get(i));
+                    break;
+                }
             }
-//            else if (Integer.parseInt(s) == i) {
-//                System.out.println(studentsList.get(i - 1));
-//                break;
-//            }
+        } else {
+            for (int i = 0; i < studentsList.size(); i++) {
+                if (Integer.parseInt(s) == i) {
+                    System.out.println(studentsList.get(i - 1));
+                    break;
+                }
+            }
         }
+
     }
 
     @Override
@@ -115,7 +121,7 @@ public class StudentService implements IService {
 //        studentsList.sort(Comparator.comparingInt(Student::getMSSV));
 //        studentsList.sort(Comparator.comparing(Student::getHoTen));
         studentsList.sort(Comparator.comparing(Student::getKhoa));
-      dispaly();
+        dispaly();
     }
 }
 
