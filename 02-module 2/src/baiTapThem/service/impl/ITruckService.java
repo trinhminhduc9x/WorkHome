@@ -45,57 +45,60 @@ public class ITruckService implements IServiceCar {
         // them mới dùng add()
         List<Truck> trucksList = new ArrayList<Truck>();
         trucksList.add(truck);
-        ReadAndWriteCSV.writeListToCSV(trucksList, PATH_FILE);
+        ReadAndWriteCSV.writeListToCSV(trucksList, PATH_FILE, true);
     }
 
     @Override
     public void dispaly() {
         List<Truck> trucksList = ReadAndWriteCSV.employeeList(PATH_FILE);
         for (int i = 0; i < trucksList.size(); i++) {
-            System.out.println((1+i)+". " + trucksList.get(i));
+            System.out.println((1 + i) + ". " + trucksList.get(i));
         }
     }
 
     @Override
     public void searchByName(String name) {
-//        int count =0;
-//        for (int i = 0; i < trucksList.size(); i++) {
-//            if (name.equals(trucksList.get(i).getBienKiemSoat())) {
-//                System.out.println(trucksList.get(i));
-//                count++;
-//                break;
-//            }
-//        }
-//        if (count==0){
-//            System.out.println(" ko co phuong tien duoc tim thay");
-//
-//        }
+        List<Truck> trucksList = ReadAndWriteCSV.employeeList(PATH_FILE);
+        int count =0;
+        for (int i = 0; i < trucksList.size(); i++) {
+            if (name.equals(trucksList.get(i).getBienKiemSoat())) {
+                System.out.println(trucksList.get(i));
+                count++;
+                break;
+            }
+        }
+        if (count==0){
+            System.out.println(" ko co phuong tien duoc tim thay");
+        }
     }
 
     @Override
     public void delete(String name) {
-//        for (int i = 0; i < trucksList.size(); i++) {
-//            if (name.equals(trucksList.get(i).getBienKiemSoat())) {
-//                System.out.println("Chức năng của hệ thống " +
-//                        "\n 1.yes" +
-//                        "\n 2.No");
-//                Scanner scanner = new Scanner(System.in);
-//                System.out.println("Chọn chức năng");
-//                int choose = Integer.parseInt(scanner.nextLine());
-//                switch (choose) {
-//                    case 1:
-//                        System.out.println("chức năng them moi");
-//                        trucksList.remove(i);
-//                        System.out.println("da xoa thanh cong");
-//                        break;
-//                    case 2:
-//                        System.out.println("Chức năng hien thi");
-//                        break;
-//                }
-//                break;
-//            }
-//
-//        }
+        List<Truck> trucksList = ReadAndWriteCSV.employeeList(PATH_FILE);
+        dispaly();
+        for (int i = 0; i < trucksList.size(); i++) {
+            if (name.equals(trucksList.get(i).getBienKiemSoat())) {
+                System.out.println("bạn có chắc chắn xóa không " +
+                        "\n 1.yes" +
+                        "\n 2.No");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Chọn chức năng");
+                int choose = Integer.parseInt(scanner.nextLine());
+                switch (choose) {
+                    case 1:
+                        System.out.println("chức năng xóa ");
+                        trucksList.remove(i);
+                        ReadAndWriteCSV.writeListToCSV(trucksList, PATH_FILE, false);
+                        System.out.println("da xoa thanh cong");
+                        break;
+                    case 2:
+                        System.out.println("không xóa thoát ra ngoài");
+                        break;
+                }
+                break;
+            }
+
+        }
     }
 
 

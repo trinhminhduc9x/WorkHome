@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="429c9036-c3d3-4c9c-8ed6-70c0326d0192" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/baiTapThem/data/truck.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/baiTapThem/util/ReadAndWriteCSV.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/baiTapThem/model/Truck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/baiTapThem/model/Truck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/baiTapThem/data/truck.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/baiTapThem/data/truck.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/baiTapThem/service/impl/ITruckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/baiTapThem/service/impl/ITruckService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/baiTapThem/util/ReadAndWriteCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/baiTapThem/util/ReadAndWriteCSV.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +176,7 @@
       <workItem from="1656232552772" duration="395000" />
       <workItem from="1656253679642" duration="3682000" />
       <workItem from="1656342804955" duration="736000" />
+      <workItem from="1656343671365" duration="580000" />
     </task>
     <servers />
   </component>
