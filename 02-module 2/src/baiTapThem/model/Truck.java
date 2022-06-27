@@ -74,4 +74,7 @@ public class Truck extends Car {
                 super.toString() +
                 '}';
     }
+    public  String getToCSV(){
+        return getBienKiemSoat()+","+getTemHangSanXuat()+","+getNamSanXuat()+","+getChuSoHuu()+","+ getTrongTai();
+    }
 }
