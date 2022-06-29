@@ -1,19 +1,23 @@
 package module_casestudy.model.person;
 
+import java.time.LocalDate;
+
 public abstract class Person {
     private String id;
     private String name;
-    private boolean gender;
-    private int idNumber;
+    private LocalDate dateOfBirth;
+    private String gender;
+    private String idNumber;
     private int phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String id, String name, boolean gender, int idNumber, int phoneNumber, String email) {
+    public Person(String id, String name, LocalDate dateOfBirth, String gender, String idNumber, int phoneNumber, String email) {
         this.id = id;
         this.name = name;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.idNumber = idNumber;
         this.phoneNumber = phoneNumber;
@@ -36,19 +40,27 @@ public abstract class Person {
         this.name = name;
     }
 
-    public boolean isGender() {
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public int getIdNumber() {
+    public String getIdNumber() {
         return idNumber;
     }
 
-    public void setIdNumber(int idNumber) {
+    public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
 
@@ -68,14 +80,19 @@ public abstract class Person {
         this.email = email;
     }
 
+    public String getInfoToCSV() {
+        return getId() + "," + getName() + "," + getDateOfBirth() + "," + getGender() + "," + getIdNumber() + "," + getPhoneNumber() + "," + getEmail() ;
+    }
     @Override
     public String toString() {
-        return "id='" + id + '\'' +
+        return "Person{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", gender=" + gender +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender='" + gender + '\'' +
                 ", idNumber=" + idNumber +
                 ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\''
-               ;
+                ", email='" + email + '\'' +
+                '}';
     }
 }

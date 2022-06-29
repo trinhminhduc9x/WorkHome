@@ -1,9 +1,11 @@
 package module_casestudy.model.person;
 
+import java.time.LocalDate;
+
 public class Employee extends Person {
-private String levelEmployee;
-private String locationEmployee;
-private int salaryEmployee;
+    private String levelEmployee;
+    private String locationEmployee;
+    private int salaryEmployee;
 
     public Employee() {
     }
@@ -14,12 +16,17 @@ private int salaryEmployee;
         this.salaryEmployee = salaryEmployee;
     }
 
-    public Employee(String id, String name, boolean gender, int idNumber, int phoneNumber, String email, String levelEmployee, String locationEmployee, int salaryEmployee) {
-        super(id, name, gender, idNumber, phoneNumber, email);
+    public Employee(String id, String name, LocalDate dateOfBirth, String gender, String idNumber, int phoneNumber, String email, String levelEmployee, String locationEmployee, int salaryEmployee) {
+        super(id, name, dateOfBirth, gender, idNumber, phoneNumber, email);
         this.levelEmployee = levelEmployee;
         this.locationEmployee = locationEmployee;
         this.salaryEmployee = salaryEmployee;
     }
+
+    public String getInfoToCSV() {
+        return super.getInfoToCSV()+ "," + getLevelEmployee() + "," + getLocationEmployee() + "," + getSalaryEmployee();
+    }
+
 
     public String getLevelEmployee() {
         return levelEmployee;
