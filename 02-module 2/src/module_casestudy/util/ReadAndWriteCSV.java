@@ -64,7 +64,7 @@ public class ReadAndWriteCSV {
         String[] array;
         for (int i = 0; i < strings.size(); i++) {
             array = strings.get(i).split(",");
-            employeeList.add(new Employee(array[0], array[1], LocalDate.parse(array[2]), array[3], array[4], Integer.parseInt(array[5]), array[6], array[7], array[8], Integer.parseInt(array[9])));
+            employeeList.add(new Employee(array[0], array[1], LocalDate.parse(array[2]), array[3], array[4], array[5], array[6], array[7], array[8], array[9]));
         }
         return employeeList;
     }

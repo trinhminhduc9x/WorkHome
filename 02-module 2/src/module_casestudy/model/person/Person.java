@@ -8,13 +8,13 @@ public abstract class Person {
     private LocalDate dateOfBirth;
     private String gender;
     private String idNumber;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String id, String name, LocalDate dateOfBirth, String gender, String idNumber, int phoneNumber, String email) {
+    public Person(String id, String name, LocalDate dateOfBirth, String gender, String idNumber, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -64,11 +64,11 @@ public abstract class Person {
         this.idNumber = idNumber;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -81,18 +81,17 @@ public abstract class Person {
     }
 
     public String getInfoToCSV() {
-        return getId() + "," + getName() + "," + getDateOfBirth() + "," + getGender() + "," + getIdNumber() + "," + getPhoneNumber() + "," + getEmail() ;
+        return this.id + "," + this.name + "," + this.dateOfBirth + "," + this.gender + "," + this.idNumber + "," + this.phoneNumber + "," + this.email;
     }
+
     @Override
     public String toString() {
-        return "Person{" +
-                "id='" + id + '\'' +
+        return "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender='" + gender + '\'' +
                 ", idNumber=" + idNumber +
                 ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\'';
     }
 }
