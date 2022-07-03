@@ -84,6 +84,8 @@ public abstract class Person {
         return this.id + "," + this.name + "," + this.dateOfBirth + "," + this.gender + "," + this.idNumber + "," + this.phoneNumber + "," + this.email;
     }
 
+
+
     @Override
     public String toString() {
         return "id='" + id + '\'' +

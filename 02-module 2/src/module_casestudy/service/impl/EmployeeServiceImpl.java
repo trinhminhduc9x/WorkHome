@@ -7,6 +7,8 @@ import module_casestudy.service.EmployeeService;
 import module_casestudy.util.ReadAndWriteCSV;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +18,8 @@ import java.util.regex.Pattern;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private static Scanner scanner = new Scanner(System.in);
+    private static List<Employee> employeeList = new ArrayList<>();
     private static final String PATH_FILE = "src/module_casestudy/data/Employee.csv";
-    private static Pattern pattern;
-    private Matcher matcher;
-
 
     @Override
     public void display() {
@@ -35,29 +35,42 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void add() {
-        List<Employee> employeeList = new ArrayList<>();
         List<Employee> employeeList1 = ReadAndWriteCSV.readEmployeeList(PATH_FILE);
         String id = String.valueOf(employeeList1.size() + 1);
         String name = "";
         do {
             System.out.println("nhập tên");
             name = scanner.nextLine();
-            if (Check.CheckRegexName(name)) {
+            if (Check.checkEmployeeName(name)) {
                 System.out.println(" nhập đúng tên");
             } else {
                 System.out.println(" nhập không đúng tên pháp yêu cầu nhập lại");
             }
-        } while (!Check.CheckRegexName(name));
-        LocalDate date;
-        while (true) {
+        } while (!Check.checkEmployeeName(name));
+
+
+        LocalDate dateNow = LocalDate.now();
+        boolean check;
+        LocalDate date = null;
+        do {
             try {
-                System.out.println("nhập ngay sinh theo yyyy-MM-dd");
-                date = LocalDate.parse(scanner.nextLine());
-                break;
+                System.out.println("nhập ngay sinh theo dd/MM/yyyy");
+                String day = scanner.nextLine();
+                date = LocalDate.parse(day, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                Period periodToNextJavaRelease = Period.between(date, dateNow);
+                if (periodToNextJavaRelease.getYears() < 100 && periodToNextJavaRelease.getYears() > 18) {
+                    System.out.println("bạn đã nhập đúng ");
+                    break;
+                }
+                check = false;
+                System.out.println("bạn đã nhập sai yêu cầu nhâp lại ");
             } catch (DateTimeParseException e) {
                 System.out.println("bạn đã nhập sai yêu cầu nhâp lại ");
+                check = false;
             }
-        }
+        } while (!check);
+
+
         String gioitinh = "";
         do {
             System.out.println("chọn giới tính " +
@@ -88,35 +101,35 @@ public class EmployeeServiceImpl implements EmployeeService {
         do {
             System.out.println("nhập số CMND gồm 9 số hoặc căn cước công dân gồm 11 số");
             idNumber = scanner.nextLine();
-            if (Check.CheckRegexIdName(idNumber)) {
+            if (Check.checkEmployeeIdName(idNumber)) {
                 System.out.println(" nhập đúng số CMND hoặc căn cước công dân");
                 break;
             } else {
                 System.out.println(" nhập không đúng số CMND hoặc căn cước công dân yêu cầu nhập lại");
             }
-        } while (!Check.CheckRegexIdName(idNumber));
+        } while (!Check.checkEmployeeIdName(idNumber));
         String idPhone = "";
         do {
             System.out.println("nhập số điện thoại ");
             idPhone = scanner.nextLine();
-            if (Check.CheckRegexPhone(idPhone)) {
+            if (Check.checkEmployeePhone(idPhone)) {
                 System.out.println(" nhập đúng số điện thoại");
                 break;
             } else {
                 System.out.println(" nhập không đúng số điện thoại yêu cầu nhập lại");
             }
-        } while (!Check.CheckRegexPhone(idPhone));
+        } while (!Check.checkEmployeePhone(idPhone));
         String email = "";
         do {
             System.out.println("nhập số email");
             email = scanner.nextLine();
-            if (Check.CheckRegexEmail(email)) {
+            if (Check.checkEmployeeEmail(email)) {
                 System.out.println(" nhập đúng email");
                 break;
             } else {
                 System.out.println(" nhập không đúng email, yêu cầu nhập lại");
             }
-        } while (!Check.CheckRegexEmail(email));
+        } while (!Check.checkEmployeeEmail(email));
         System.out.println(" nhap levelEmployee");
         String level = "";
         String choose;
@@ -185,17 +198,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         do {
             System.out.print("Nhập lương: ");
             salary = scanner.nextLine();
-            if (Check.CheckRegexSalary(salary)) {
+            if (Check.checkRegexSalary(salary)) {
                 System.out.println(" nhập đúng số lương  ");
             } else {
                 System.out.println("nhập sai số lương cần nhập lại");
             }
-        } while (!Check.CheckRegexSalary(salary));
+        } while (!Check.checkRegexSalary(salary));
         Employee employee = new Employee(id, name, date, gioitinh, idNumber, idPhone, email, level, location, salary);
         employeeList.add(employee);
         ReadAndWriteCSV.writeEmployeeListToCSV(employeeList, PATH_FILE, true);
     }
-
 
     @Override
     public void edit() {
@@ -210,22 +222,34 @@ public class EmployeeServiceImpl implements EmployeeService {
                 do {
                     System.out.println("nhập tên");
                     name = scanner.nextLine();
-                    if (Check.CheckRegexName(name)) {
+                    if (Check.checkEmployeeName(name)) {
                         System.out.println(" nhập đúng tên");
                     } else {
                         System.out.println(" nhập không đúng tên pháp yêu cầu nhập lại");
                     }
-                } while (!Check.CheckRegexName(name));
-                LocalDate date;
-                while (true) {
+                } while (!Check.checkEmployeeName(name));
+
+                LocalDate dateNow = LocalDate.now();
+                boolean check;
+                LocalDate date = null;
+                do {
                     try {
-                        System.out.println("nhập ngay sinh theo yyyy-MM-dd");
-                        date = LocalDate.parse(scanner.nextLine());
-                        break;
+                        System.out.println("nhập ngay sinh theo dd/MM/yyyy");
+                        String day = scanner.nextLine();
+                        date = LocalDate.parse(day, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                        Period periodToNextJavaRelease = Period.between(date, dateNow);
+                        if (periodToNextJavaRelease.getYears() < 100 && periodToNextJavaRelease.getYears() > 18) {
+                            System.out.println("bạn đã nhập đúng ");
+                            break;
+                        }
+                        check = false;
+                        System.out.println("bạn đã nhập sai yêu cầu nhâp lại ");
                     } catch (DateTimeParseException e) {
                         System.out.println("bạn đã nhập sai yêu cầu nhâp lại ");
+                        check = false;
                     }
-                }
+                } while (!check);
+
                 String gioitinh = "";
                 do {
                     System.out.println("chọn giới tính " +
@@ -256,35 +280,35 @@ public class EmployeeServiceImpl implements EmployeeService {
                 do {
                     System.out.println("nhập số CMND hoặc căn cước công dân");
                     idNumber = scanner.nextLine();
-                    if (Check.CheckRegexIdName(idNumber)) {
+                    if (Check.checkEmployeeIdName(idNumber)) {
                         System.out.println(" nhập đúng số CMND hoặc căn cước công dân");
                         break;
                     } else {
                         System.out.println(" nhập không đúng số CMND hoặc căn cước công dân yêu cầu nhập lại");
                     }
-                } while (!Check.CheckRegexIdName(idNumber));
+                } while (!Check.checkEmployeeIdName(idNumber));
                 String idPhone = "";
                 do {
                     System.out.println("nhập số điện thoại");
                     idPhone = scanner.nextLine();
-                    if (Check.CheckRegexPhone(idPhone)) {
+                    if (Check.checkEmployeePhone(idPhone)) {
                         System.out.println(" nhập đúng số điện thoại");
                         break;
                     } else {
                         System.out.println(" nhập không đúng số điện thoại yêu cầu nhập lại");
                     }
-                } while (!Check.CheckRegexPhone(idPhone));
+                } while (!Check.checkEmployeePhone(idPhone));
                 String email = "";
                 do {
                     System.out.println("nhập số email");
                     email = scanner.nextLine();
-                    if (Check.CheckRegexEmail(email)) {
+                    if (Check.checkEmployeeEmail(email)) {
                         System.out.println(" nhập đúng email");
                         break;
                     } else {
                         System.out.println(" nhập không đúng email, yêu cầu nhập lại");
                     }
-                } while (!Check.CheckRegexEmail(email));
+                } while (!Check.checkEmployeeEmail(email));
                 System.out.println(" nhap levelEmployee");
                 String level = "";
                 String choose;
@@ -353,12 +377,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 do {
                     System.out.print("Nhập lương: ");
                     salary = scanner.nextLine();
-                    if (Check.CheckRegexSalary(salary)) {
+                    if (Check.checkRegexSalary(salary)) {
                         System.out.println(" nhập đúng số lương  ");
                     } else {
                         System.out.println("nhập sai số lương cần nhập lại");
                     }
-                } while (!Check.CheckRegexSalary(salary));
+                } while (!Check.checkRegexSalary(salary));
                 employeeList.get(i).setId(id);
                 employeeList.get(i).setName(name);
                 employeeList.get(i).setDateOfBirth(date);
@@ -373,5 +397,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 break;
             }
         }
+    }
+
+    public void delete() {
+        List<Employee> employeeList = ReadAndWriteCSV.readEmployeeList(PATH_FILE);
+        display();
+        System.out.println(" nhap hoc vien can xoa");
+        int delete = Integer.parseInt(scanner.nextLine());
+        employeeList.remove(delete - 1);
+        for (int i = 0; i < employeeList.size(); i++) {
+            employeeList.get(i).setId(String.valueOf(1 + i));
+        }
+        ReadAndWriteCSV.writeEmployeeListToCSV(employeeList, PATH_FILE, false);
     }
 }

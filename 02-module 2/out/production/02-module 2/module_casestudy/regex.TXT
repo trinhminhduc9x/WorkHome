@@ -1,0 +1,308 @@
+Regular Expression trong Java
+Chúng ta thường bắt gặp các thông báo như: Mật khẩu phải chứa ký tự hoa, ký tự đặc biệt; Định dạng ID, Email không đúng,...hay đơn giản là kiểm tra định dạng của một đầu vào đúng chuẩn hay không? Regular expression trong java chính là thứ đứng đằng sau những thông báo đó.
+
+Hôm nay, Chúng ta sẽ cùng tìm hiểu về Regular Expression (trong Java) nhé các bạn
+
+Trong bài viết này, mình sẽ chia sẻ các nội dung như sau:
+
+Regular Expression là gì?
+Gói java.util.regex trong Java.
+Quy tắc viết Regular Expression trong Java.
+Sử dụng Regular Expression trong Java và ví dụ.
+Tổng kết.
+1. Regular Expression là gì?
+Regular Expression (Biểu thức chính quy) hay gọi tắt là Regex là một dãy các ký tự liên tục, qua nó giúp người sử dụng tìm kiếm hoăc so khớp hoặc các thao tác liên quan tuân theo những quy tắc và cú pháp nhất định.
+
+2. Gói java.util.regex trong Java
+Gói java.util.regex cung cấp các lớp và giao diện cơ bản sau:
+
+Interface MatchResult
+Lớp Matcher
+Lớp Pattern
+Lớp PatternSyntaxException
+Lớp Matcher và Pattern trong java cung cấp cơ sở của biểu thức chính quy:
+
+2.1 Lớp Pattern: Là một đối tượng mẫu được biên dịch từ một biểu thức chính quy, không có constructor public. Chúng ta sử dụng method compile() để tạo đối tượng, với tham số là biểu thức chính quy.
+
+Các phương thức cơ bản:
+
+STT	Phương thức	Mô tả
+1	static Pattern compile(String regex)
+Biên dịch regex đã cho và trả về thể hiện của Pattern.
+
+2	Matcher matcher(CharSequence input)
+Tạo một matcher khớp với đầu vào đã cho với mẫu.
+
+3
+static boolean matches(String regex, CharSequence input)
+
+Biên dịch biểu thức chính quy và tìm kiếm các chuỗi con từ chuỗi input phù hợp với mẫu regex.
+4	String[] split(CharSequence input)	Chia chuỗi input đã cho thành mảng các kết quả trùng khớp với đầu vào.
+5
+String pattern()
+
+trả về mẫu regex.
+
+2.2 Lớp Matcher: Là một phương tiện để so khớp chuỗi dữ liệu đầu vào với đối tượng Pattern đã được tạo trước, không có constructor public. Chúng ta lấy đối tượng này thông qua method matcher() của đối tượng Pattern với tham số là đầu vào cần kiểm tra.
+
+Các phương thức cơ bản:
+
+STT	Phương thức	Mô tả
+1
+boolean matches()
+
+Kiểm tra xem biểu thức chính quy có khớp với mẫu hay không.
+
+2
+boolean find()
+
+Tìm biểu thức tiếp theo khớp với mẫu.
+
+3
+
+boolean find(int start)
+
+Tìm biểu thức tiếp theo khớp với mẫu từ chỉ số bắt đầu đã cho.
+4
+String group()
+
+Trả về chuỗi con phù hợp.
+5
+int start()
+
+Trả về vị trí bắt đầu của chuỗi con phù hợp.
+6
+int end()
+
+Trả về vị trí kết thúc của chuỗi con phù hợp.
+
+7
+int groupCount()
+
+Trả về tổng số các chuỗi con phù hợp.
+3. Quy tắc viết Regular Expression trong Java.
+Regex
+Mô tả
+.
+So khớp với bất kỳ ký tự đơn nào
+
+^
+So khớp phần đầu của chuỗi hay dòng
+
+$
+So khớp phần cuối của chuỗi hay dòng
+
+(…)
+So khớp với các ‘nhóm’ ký tự bên trong
+
+[…]
+So khớp với bất kỳ ký tự đơn nào trong dấu ngoặc vuông
+
+[^…]
+So khớp với bất kỳ ký tự đơn nào ngoại trừ các ký tự trong dấu ngoặc vuông
+
+[m-n]
+So khớp từ ký tự m đến ký tự n theo thứ tự trong ASCII
+
+XY
+So khớp với ‘X theo sau là Y’, ví dụ: [a-e][i-u]
+
+X|Y
+So khớp với X hoặc Y
+
+\d
+So khớp với ký tự là chữ số, viết tắt của [0-9]
+
+\D
+So khớp với ký tự không phải là chữ số, viết tắt của [^0-9]
+
+\s
+So khớp với bất kỳ ký tự trống nào (dấu cách, tab, xuống dòng), viết tắt của [\t\n\x0B\f\r]
+
+\S
+So khớp với bất kỳ ký tự không phải ký tự trống, viết tắt của [^\s]
+
+\w
+So khớp bất kỳ ký tự chữ nào (chữ cái và chữ số), viết tắt của [a-zA-Z0-9]
+
+\W
+So khớp bất kỳ ký tự nào không phải chữ cái và chữ số, viết tắt của [^\w]
+
+\b
+Ranh giới của một từ
+
+\B
+Không phải là ranh giới của một từ
+
+\A
+So khớp phần đầu của đầu vào
+
+\G
+So khớp phần cuối của đầu vào
+
+X*
+So khớp với 0 hoặc nhiều sự xuất hiện của X, viết gọn cho X{0,}
+
+X+
+So khớp với 1 hoặc nhiều sự xuất hiện X,  viết gọn cho X{1,}
+
+X?
+So khớp 0 hoặc 1 sự xuất hiện của X, viết gọn cho X{0,1}
+
+X{n}
+So khớp chính xác n lần sự xuất hiện của X
+
+X{n,}
+So khớp n hoặc nhiều hơn số lần xuất hiện của X
+
+X{n,m}
+So khớp với ít nhất n và nhiều nhất m lần xuất hiện của X
+
+Toán tử và độ ưu tiên (từ cao tới thấp) trong trong lớp các ký tự:
+          1. Literal escape: \x
+
+              Ví dụ: \s, \b,…
+
+          2. Grouping (Phép nhóm): […]
+
+              Ví dụ: [abc]
+
+          3. Range (Miền), ví dụ: a-z (từ a tới z)
+
+          4. Union (Phép hợp): […][…]
+
+              Ví dụ: [a-e][i-u]
+
+          5. Intersection (Phép giao): &&
+
+              Ví dụ: [a-z&&[ueoai]]
+
+Capturing Groups
+Capturing Groups là cách coi nhiều nhiều ký tự như môt ký tự đơn.
+
+Ví dụ, Regex (nmd) tạo một nhóm chứa các ký tự n, m, d nhưng xem như “nmd” là một ký tự đơn đễ dễ dàng thao tác.
+
+Capturing groups được đánh số bởi việc tính toán số dấu ngoặc đơn từ trái qua phải.
+
+Ví dụ, trong ((A)(B(C)) có 4 nhóm: ((A)(B(C)), (A), (B(C)) và (C).
+
+Các ký tự đặc biệt: \.[{(*+?^$|
+4. Sử dụng Regular Expression trong Java và ví dụ
+4.1. Sử dụng String.matches(String)
+
+Lý thuyết: String.matches(String) được dùng để kiểm tra chuỗi đầu vào có phù hợp với biểu thức regex hay không. Đây là cách thông dụng nhất.
+
+Ví dụ:
+
+package RegexMainNMD;
+//NMD
+public class RegexNMDSE {
+
+    public static void main(String[] args) {
+       String[] strTest = { "","1602","1998","NMD98","1998d","nmdse"};
+       // Kiểm tra xem chuỗi có chứa các chữ cái hay không
+       for(String str: strTest){
+           System.out.println("Chuỗi " + str + " có chứa các chữ cái:
+                              "+str.matches(".*[a-zA-Z].*"));
+       }
+       System.out.println("____________");
+       // kiểm tra xem chuỗi có chứa các chữ số hay không
+       for(String str: strTest){
+           System.out.println("Chuỗi " + str + " có chứa các chữ số:
+                              "+str.matches(".*[0-9].*"));
+       }
+    }
+}
+Kết quả:
+
+Chuỗi 1602 có chứa các chữ cái: false
+Chuỗi 1998 có chứa các chữ cái: false
+Chuỗi NMD98 có chứa các chữ cái: true
+Chuỗi 1998d có chứa các chữ cái: true
+Chuỗi nmdse có chứa các chữ cái: true
+____________
+Chuỗi  có chứa các chữ số: false
+Chuỗi 1602 có chứa các chữ số: true
+Chuỗi 1998 có chứa các chữ số: true
+Chuỗi NMD98 có chứa các chữ số: true
+Chuỗi 1998d có chứa các chữ số: true
+Chuỗi nmdse có chứa các chữ số: false
+Bằng các regex tương tự cho email, id, password...chúng ta hoàn toàn có thể sử dụng String.matches() để kiểm tra.
+
+4.2. Sử dụng lớp Pattern và Matcher
+
+Chúng ta thử với ví dụ về định dạng ngày tháng năm dd/mm/yyyy hoặc dd-mm-yyyy:
+
+package RegexMainNMD;
+//NMD
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegexNMDSE {
+    public static void main(String[] args) {
+        String strTest = "Regex 15-05-2020, Nguyen Minh Duc 16/02/1998. Deadline 18_02_2020";
+        Pattern patternDate = Pattern.compile("\\d{2}[-|/]\\d{2}[-|/]\\d{4}");
+        Matcher matcher = patternDate.matcher(strTest);
+
+        System.out.println("Ngày tháng năm trong chuỗi đầu vào: " + strTest +" là:");
+        while(matcher.find()) {
+            System.out.println(strTest.substring(matcher.start(), matcher.end()));
+        }
+        String strTest2 = "15/05/2020";
+        String strTest3 = "16/02/mdse";
+        patternDate = Pattern.compile("^\\d{2}[-|/]\\d{2}[-|/]\\d{4}$");
+        System.out.println("Chuỗi " + strTest2 + " có định dạng ngày tháng: "
+                + patternDate.matcher(strTest2).matches());
+
+        System.out.println("Chuỗi " + strTest3 + " có định dạng ngày tháng: "
+                + patternDate.matcher(strTest3).matches());
+    }
+}
+Kết quả:
+
+Ngày tháng năm trong chuỗi đầu vào: Regex 15-05-2020, Nguyen Minh Duc 16/02/1998. Deadline 18_02_2020 là:
+15-05-2020
+16/02/1998
+Chuỗi 15/05/2020 có định dạng ngày tháng: true
+Chuỗi 16/02/mdse có định dạng ngày tháng: false
+Chúng ta hoàn toàn làm tương tự với các ví dụ với các mẫu regex khác.
+
+4.3. Các biểu thức chính quy thường gặp và hay sử dụng trong Java
+Một số mẫu regex thường gặp sau đây:
+
+        1. Kiểm tra định dạng email:
+
+           ^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$
+          2. Kiểm tra username:
+
+    Ví dụ: Username có độ tài từ 6 đến 12 ký tự, không có khoảng trắng và không dấu:
+
+           [a-z0-9_-]{6,12}$
+          3. Kiểm tra password:
+
+Ví dụ: + Phải chứa ít nhất 1 ký tự số từ 0 – 9
+
+          + Phải chứa ít nhất 1 ký tự chữ thường
+
+          + Phải chứa ít nhất 1 ký tự chữ hoa
+
+          + Phải chứa ít nhất 1 ký tự trong tập các ký tự
+
+           ((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{6,20})
+4. Kiểm tra khoảng trống đầu và cuối:
+
+           ^[ \s]+|[ \s]+$
+5. Đỉa chỉ IPv4:
+
+           ^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$
+6. Định dạng ngày dd/mm/yyyy hoặc dd-mm-yyyy:
+
+           \\d{2}[-|/]\\d{2}[-|/]\\d{4}
+5. Tổng kết
+Qua bài viết này, hi vọng bạn đọc có thể hiểu và nắm được Regular Expression trong Java và cách nó làm việc để nhận thấy rằng việc nắm bắt, ứng dụng được kiến thức về Regex là một lợi thế. Cảm ơn mọi người đã đọc bài chia sẻ này và rất mong nhận được ý kiến phản hồi từ các bạn.
+
+Nguồn tham khảo:
+
+1. JavaPoint - Java Regex
+
+2. Pattern Oracle

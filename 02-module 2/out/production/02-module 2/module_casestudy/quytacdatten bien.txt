@@ -1,0 +1,112 @@
+Quy ước đặt tên Java là một quy ước phải tuân theo khi bạn quyết định nên đặt tên bất kỳ một định danh nào đó như: Class, Package, Variable, Constant, Method…
+
+Nhưng, nó không bị bắt buộc phải làm theo. Vì vậy, nó được gọi là QUY ƯỚC chứ không phải là QUY TẮC. Các Quy ước này được đề xuất bởi một số cộng đồng Java như Sun microsystems và Netscape.
+
+Tất cả các class, interface, package, method và field của ngôn ngữ lập trình Java được đưa ra theo quy ước đặt tên Java. Nếu bạn không tuân theo các quy ước này, nó có thể tạo ra sự nhầm lẫn hoặc sai sót khi viết code.
+
+Lợi ích khi tuân theo quy ước đặt tên là gì?
+Bằng cách sử dụng các quy ước đặt tên Java tiêu chuẩn, bạn làm cho code của mình dễ đọc hơn cho chính bản thân mình và cả các lập trình viên khác.
+
+Khả năng đọc của chương trình Java là rất quan trọng. Nó giúp chúng ta ít tốn thời gian để hiểu xem mình đã làm gì hơn..
+
+Sau đây là các quy tắc chính phải được tuân theo bởi mọi định danh:
+
+Tên không được chứa bất kỳ khoảng trắng nào.
+Tên không nên bắt đầu bằng các ký tự đặc biệt như ký hiệu &, $(đô la), _ (gạch dưới).
+#1. Quy ước đặt tên Class trong Java
+Tên Class trong Java nên tuân theo những quy ước sau:
+
+Nó nên bắt đầu bằng chữ in Hoa.
+Nó phải là một danh từ như Màu sắc, Nút, Hệ thống, Chủ đề, v.v.
+Sử dụng các từ thích hợp, thay vì các từ viết tắt.
+Ví dụ:
+
+public class Employee{
+  //code somthing...
+}
+#2. Quy ước đặt tên Interface trong Java
+Tên Interface trong Java nên tuân theo những quy ước sau:
+
+Nó nên bắt đầu bằng chữ in Hoa.
+Nó phải là một tính từ như Runnable, Remote, ActionListener.
+Sử dụng các từ thích hợp, thay vì các từ viết tắt.
+Ví dụ:
+
+interface Printable{
+  //code somthing...
+}
+Một quy ước đặt tên Interface cũng rất phổ biến đó là sử dụng chữ I ở đầu tên, như:
+
+interface IPrintable{
+  //code somthing...
+}
+#3. Quy ước đặt tên Method trong Java
+Tên Method trong Java nên tuân theo những quy ước sau:
+
+Nó nên bắt đầu bằng chữ thường.
+Nó phải là một động từ như main(), print(), println().
+Nếu tên chứa nhiều từ, hãy bắt đầu nó bằng một chữ cái viết thường theo sau là một chữ cái viết hoa như actionPerformed().
+Ví dụ:
+
+class Employee{
+  //method
+  void draw(){
+    //code somthing...
+  }
+}
+#4. Quy ước đặt tên Biến trong Java
+Tên biến trong Java nên tuân theo những quy ước sau:
+
+Nó nên bắt đầu bằng một chữ cái viết thường như id, name.
+Không nên bắt đầu bằng các ký tự đặc biệt như ký hiệu &, $ (đô la), _ (gạch dưới).
+Nếu tên chứa nhiều từ, hãy bắt đầu bằng chữ cái viết thường theo sau là chữ cái viết hoa như firstName, lastName.
+Tránh sử dụng các biến một ký tự như x, y, z.
+Ví dụ:
+
+class Employee{
+  //variable
+  int id;
+  //code somthing...
+}
+#5. Quy ước đặt tên Package trong Java
+Tên package trong Java nên tuân theo những quy ước sau:
+
+Nó nên là một chữ cái viết thường như java, lang.
+Nếu tên chứa nhiều từ, nó nên được phân tách bằng dấu chấm (.) Như java.util, java.lang.
+Ví dụ:
+
+package com.javatpoint; //package
+class Employee{
+  //code somthing...
+}
+#6. Quy ước đặt tên Hằng trong Java
+Tên constant (Hằng) trong Java nên tuân theo những quy ước sau:
+
+Nó nên được viết bằng chữ in hoa như RED, YELLOW.
+Nếu tên chứa nhiều từ, nó phải được phân tách bằng dấu gạch dưới (_), chẳng hạn như MAX_PRIORITY.
+Nó có thể chứa các chữ số nhưng không phải là bắt đầu bằng chữ số.
+Ví dụ:
+
+class Employee{
+ //constant
+ static final int MIN_AGE = 18;
+ //code somthing...
+}
+#7. Quy ước đặt tên camelCase trong Java
+Java tuân theo cú pháp camelCase để đặt tên class, interface, method và variable.
+
+Nếu tên được kết hợp với hai từ, từ thứ hai luôn luôn sẽ bắt đầu bằng chữ in hoa như actionPerformed(), FirstName, ActionEvent, ActionListener, v.v.
+
+Kết hợp với các quy ước ở bên trên để đạt chuẩn nhất.
+
+Bạn đã hiểu về cách đặt tên trong Java chưa?
+Đặt tên trong Java nói riêng và trong lập trình nói chung rất quan trong.
+
+Vốn dĩ ngôn ngữ lập trình đã khó hiểu, thế nên đừng cố gắng làm mọi thứ trở nên khó hiểu hơn, nó chỉ làm khổ bạn thêm mà thôi.
+
+Học cách Đặt tên theo Quy ước bạn sẽ thấy level lập trình của mình tăng nhanh bất ngờ đấy. (Vì bạn sẽ không tốn thời gian cho thứ vô ích, có thời gian nghiên cứu sâu hơn mà)
+
+>> Tất cả bạn sẽ được học và huấn luyện trong Khóa học Java Fullstack
+
+Chúc bạn học lập trình Java hiệu quả.
+
