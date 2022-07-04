@@ -1,8 +1,10 @@
 package module_casestudy.controller;
 
+import module_casestudy.service.BookingService;
 import module_casestudy.service.CustomerService;
 import module_casestudy.service.EmployeeService;
 import module_casestudy.service.FacilityService;
+import module_casestudy.service.impl.BookingServiceImpl;
 import module_casestudy.service.impl.CustomerServiceImpl;
 import module_casestudy.service.impl.EmployeeServiceImpl;
 import module_casestudy.service.impl.FacilityServiceImpl;
@@ -10,10 +12,6 @@ import module_casestudy.service.impl.FacilityServiceImpl;
 import java.util.Scanner;
 
 public class MainFurama {
-    private static final EmployeeService employeeServices = new EmployeeServiceImpl();
-    private static final CustomerService customerService = new CustomerServiceImpl();
-    private static final FacilityService facilityService = new FacilityServiceImpl();
-
     public static void displayMainMenu() {
         boolean flag = true;
         do {
@@ -49,9 +47,7 @@ public class MainFurama {
                     promotionManagementMenu();
                     break;
                 case "6":
-                    flag = false;
-
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
@@ -60,8 +56,10 @@ public class MainFurama {
     }
 
     private static void employeeManagementMenu() {
+        EmployeeService employeeServices = null;
         boolean flag = true;
         do {
+            employeeServices = new EmployeeServiceImpl();
             System.out.println("Chức năng của hệ thống " +
                     "\n 1.Display list employees" +
                     "\n 2.Add new employee" +
@@ -91,8 +89,7 @@ public class MainFurama {
                     break;
                 case "5":
                     System.out.println("chức năng Return main menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
@@ -100,8 +97,10 @@ public class MainFurama {
     }
 
     private static void customerManagementMenu() {
+        CustomerService customerService = null;
         boolean flag = true;
         do {
+            customerService = new CustomerServiceImpl();
             System.out.println("Chức năng của hệ thống " +
                     "\n 1.Display list customer" +
                     "\n 2.Add new customer" +
@@ -126,13 +125,12 @@ public class MainFurama {
                     break;
                 case "4":
                     System.out.println("Chức năng Delete customer");
-                    CustomerServiceImpl customerService = new CustomerServiceImpl();
-                    customerService.delete();
+                    CustomerServiceImpl customerService1 = new CustomerServiceImpl();
+                    customerService1.delete();
                     break;
                 case "5":
                     System.out.println("chức năng Return main menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
@@ -140,8 +138,10 @@ public class MainFurama {
     }
 
     private static void facilityManagementMenu() {
+        FacilityService facilityService = null;
         boolean flag = true;
         do {
+            facilityService = new FacilityServiceImpl();
             System.out.println("Chức năng của hệ thống " +
                     "\n 1.Display list facility" +
                     "\n 2.Add new facility" +
@@ -165,18 +165,18 @@ public class MainFurama {
                     break;
                 case "4":
                     System.out.println("chức năng Return main menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
         } while (flag);
     }
 
-
     private static void bookingManagementMenu() {
+        BookingService bookingService = null;
         boolean flag = true;
         do {
+            bookingService = new BookingServiceImpl();
             System.out.println("Chức năng của hệ thống " +
                     "\n 1.Add new booking" +
                     "\n 2.Display list booking" +
@@ -190,11 +190,11 @@ public class MainFurama {
             switch (choose) {
                 case "1":
                     System.out.println("chức năng Add new booking");
-
+                    bookingService.add();
                     break;
                 case "2":
                     System.out.println("Chức năng Display list booking");
-
+                    bookingService.display();
                     break;
                 case "3":
                     System.out.println("Chức năng Create new constracts");
@@ -210,8 +210,7 @@ public class MainFurama {
                     break;
                 case "6":
                     System.out.println("chức năng Return main menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
@@ -239,8 +238,7 @@ public class MainFurama {
                     break;
                 case "3":
                     System.out.println("chức năng Return main menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }

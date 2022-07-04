@@ -1,13 +1,16 @@
 package module_casestudy.model.facility;
 
 public abstract class Facility {
+    private String idService;
     private String nameService;
     private double usableArea;
     private double rentalCosts;
     private int maximumNumOfPeople;
     private String rentalType;
 
-    public Facility(String nameService, double usableArea, double rentalCosts, int maximumNumOfPeople, String rentalType) {
+
+    public Facility(String idService, String nameService, double usableArea, double rentalCosts, int maximumNumOfPeople, String rentalType) {
+        this.idService = idService;
         this.nameService = nameService;
         this.usableArea = usableArea;
         this.rentalCosts = rentalCosts;
@@ -16,9 +19,17 @@ public abstract class Facility {
     }
 
     public String getInfoToCSV() {
-        return  this.nameService +","+ this.usableArea +","+this.rentalCosts +","+ this.maximumNumOfPeople+","+this.rentalType;
+        return this.idService +","+this.nameService +","+ this.usableArea +","+this.rentalCosts +","+ this.maximumNumOfPeople+","+this.rentalType;
     }
     public Facility() {
+    }
+
+    public String getIdService() {
+        return idService;
+    }
+
+    public void setIdService(String idService) {
+        this.idService = idService;
     }
 
     public String getNameService() {
@@ -63,11 +74,11 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return
-                "nameService='" + nameService + '\'' +
-                        ", usableArea=" + usableArea +
-                        ", rentalCosts=" + rentalCosts +
-                        ", maximumNumOfPeople=" + maximumNumOfPeople +
-                        ", rentalType='" + rentalType + '\'';
+        return "idService='" + idService + '\'' +
+                ", nameService='" + nameService + '\'' +
+                ", usableArea=" + usableArea +
+                ", rentalCosts=" + rentalCosts +
+                ", maximumNumOfPeople=" + maximumNumOfPeople +
+                ", rentalType='" + rentalType ;
     }
 }

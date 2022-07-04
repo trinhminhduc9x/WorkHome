@@ -14,10 +14,10 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class FacilityServiceImpl implements FacilityService {
-    private static final String PATH_FILE_VILLA = "src/module_casestudy/data/FacilityVilla.csv";
-    private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/FacilityHouse.csv";
-    private static final String PATH_FILE_ROOM = "src/module_casestudy/data/FacilityRoom.csv";
-    private static Scanner scanner = new Scanner(System.in);
+    private static final String PATH_FILE_VILLA = "src/module_casestudy/data/Villa.csv";
+    private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/House.csv";
+    private static final String PATH_FILE_ROOM = "src/module_casestudy/data/Room.csv";
+    static Scanner scanner = new Scanner(System.in);
 
     @Override
     public void display() {
@@ -53,8 +53,7 @@ public class FacilityServiceImpl implements FacilityService {
                     break;
                 case "5":
                     System.out.println("chức năng Back to menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
@@ -89,8 +88,7 @@ public class FacilityServiceImpl implements FacilityService {
                     break;
                 case "4":
                     System.out.println("chức năng Back to menu");
-                    flag = false;
-                    break;
+                    return;
                 default:
                     System.out.println("yêu cầu nhập đúng số hiển thị chức năng ");
             }
@@ -102,9 +100,10 @@ public class FacilityServiceImpl implements FacilityService {
 
     }
 
-
     private static void addNewVilla() {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+        Map<Facility, Integer> facilityIntegerMapNewV = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_VILLA);
+        String idService ="SVVL-" + String.valueOf(facilityIntegerMapNewV.size() + 1);
         String nameService;
         do {
             System.out.println("nhập tên");
@@ -209,7 +208,7 @@ public class FacilityServiceImpl implements FacilityService {
         }
 
 
-        Facility facility = new Villa(nameService, usableArea, rentalCosts, maximumNumOfPeople, rentalType, roomStandard, swimmingPoolArea, numOfFloor);
+        Facility facility = new Villa(idService, nameService, usableArea, rentalCosts, maximumNumOfPeople, rentalType, roomStandard, swimmingPoolArea, numOfFloor);
         Map<Facility, Integer> facilityIntegerMapInt = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_VILLA);
         facilityIntegerMap.put(facility, facilityIntegerMapInt.size() + 1);
         ReadAndWriteCSV.writeListFacilityToCSV(facilityIntegerMap, PATH_FILE_VILLA, true);
@@ -219,6 +218,8 @@ public class FacilityServiceImpl implements FacilityService {
 
     private void addNewHouse() {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+        Map<Facility, Integer> facilityIntegerMapNewH = ReadAndWriteCSV.readListFacilityHouseToCSV(PATH_FILE_HOUSE);
+        String idService = "SVHO-" + String.valueOf(facilityIntegerMapNewH.size() + 1);
         String nameService;
         do {
             System.out.println("nhập tên");
@@ -312,7 +313,7 @@ public class FacilityServiceImpl implements FacilityService {
         }
 
 
-        Facility facility = new House(nameService, usableArea, rentalCosts, maximumNumOfPeople, rentalType, roomStandard,  numOfFloor);
+        Facility facility = new House(idService, nameService, usableArea, rentalCosts, maximumNumOfPeople, rentalType, roomStandard, numOfFloor);
         Map<Facility, Integer> facilityIntegerMapInt = ReadAndWriteCSV.readListFacilityHouseToCSV(PATH_FILE_HOUSE);
         facilityIntegerMap.put(facility, facilityIntegerMapInt.size() + 1);
         ReadAndWriteCSV.writeListFacilityToCSV(facilityIntegerMap, PATH_FILE_HOUSE, true);
@@ -321,6 +322,8 @@ public class FacilityServiceImpl implements FacilityService {
 
     private void addNewRoom() {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+        Map<Facility, Integer> facilityIntegerMapNewR = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_ROOM);
+        String idService = "SVRO-" + String.valueOf(facilityIntegerMapNewR.size() + 1);
         String nameService;
         do {
             System.out.println("nhập tên");
@@ -398,7 +401,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         System.out.println("nhập dịch vụ miễn phí đi kèm ");
         String freeService = scanner.nextLine();
-        Facility facility = new Room(nameService, usableArea, rentalCosts, maximumNumOfPeople, rentalType, freeService);
+        Facility facility = new Room(idService, nameService, usableArea, rentalCosts, maximumNumOfPeople, rentalType, freeService);
         Map<Facility, Integer> facilityIntegerMapInt = ReadAndWriteCSV.readListFacilityRoomToCSV(PATH_FILE_ROOM);
         facilityIntegerMap.put(facility, facilityIntegerMapInt.size() + 1);
         ReadAndWriteCSV.writeListFacilityToCSV(facilityIntegerMap, PATH_FILE_ROOM, true);

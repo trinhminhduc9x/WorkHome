@@ -12,9 +12,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CheckFacility {
-    private static final String PATH_FILE_VILLA = "src/module_casestudy/data/FacilityVilla.csv";
-    private static final String PATH_FILE_ROOM = "src/module_casestudy/data/FacilityRoom.csv";
-    private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/FacilityHouse.csv";
+    private static final String PATH_FILE_VILLA = "src/module_casestudy/data/Villa.csv";
+    private static final String PATH_FILE_ROOM = "src/module_casestudy/data/Room.csv";
+    private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/House.csv";
     private static final String NAME_REGEX = "^[A-Z](\\w+||\\s||\\w+)+$";
     private static final Map<Facility, Integer> facilityVillaIntegerMap = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_VILLA);
     private static final Map<Facility, Integer> facilityRoomIntegerMap = ReadAndWriteCSV.readListFacilityRoomToCSV(PATH_FILE_ROOM);

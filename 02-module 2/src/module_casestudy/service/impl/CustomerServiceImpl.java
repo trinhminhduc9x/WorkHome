@@ -325,5 +325,4 @@ public class CustomerServiceImpl implements CustomerService {
         }
         ReadAndWriteCSV.writeCustomerListToCSV(customerList, PATH_FILE, false);
     }
-
 }

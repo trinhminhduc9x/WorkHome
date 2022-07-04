@@ -1,4 +1,5 @@
 package module_casestudy.util;
+import module_casestudy.model.Booking;
 import module_casestudy.model.facility.Facility;
 import module_casestudy.model.facility.House;
 import module_casestudy.model.facility.Room;
@@ -103,7 +104,7 @@ public class ReadAndWriteCSV {
         String[] array;
         for (int i = 0; i < strings.size(); i++) {
             array = strings.get(i).split(",");
-            facilityIntegerMap.put(new Villa(array[0],Double.parseDouble(array[1]),Double.parseDouble(array[2]),Integer.parseInt(array[3]) , array[4],array[5],Double.parseDouble(array[6]), Integer.parseInt(array[7])),Integer.parseInt(array[8]));
+            facilityIntegerMap.put(new Villa(array[0],array[1],Double.parseDouble(array[2]),Double.parseDouble(array[3]),Integer.parseInt(array[4]) , array[5],array[6],Double.parseDouble(array[7]), Integer.parseInt(array[8])),Integer.parseInt(array[9]));
         }
         return facilityIntegerMap;
     }
@@ -114,7 +115,7 @@ public class ReadAndWriteCSV {
         String[] array;
         for (int i = 0; i < strings.size(); i++) {
             array = strings.get(i).split(",");
-            facilityIntegerMap.put(new Room(array[0],Double.parseDouble(array[1]),Double.parseDouble(array[2]),Integer.parseInt(array[3]) , array[4],array[5]),Integer.parseInt(array[6]));
+            facilityIntegerMap.put(new Room(array[0],array[1],Double.parseDouble(array[2]),Double.parseDouble(array[3]),Integer.parseInt(array[4]) , array[5],array[6]),Integer.parseInt(array[7]));
         }
         return facilityIntegerMap;
     }
@@ -124,8 +125,25 @@ public class ReadAndWriteCSV {
         String[] array;
         for (int i = 0; i < strings.size(); i++) {
             array = strings.get(i).split(",");
-            facilityIntegerMap.put(new House(array[0],Double.parseDouble(array[1]),Double.parseDouble(array[2]),Integer.parseInt(array[3]) , array[4],array[5],Integer.parseInt(array[6])),Integer.parseInt(array[7]));
+            facilityIntegerMap.put(new House(array[0],array[1],Double.parseDouble(array[2]),Double.parseDouble(array[3]),Integer.parseInt(array[4]) , array[5],array[6],Integer.parseInt(array[7])),Integer.parseInt(array[8]));
         }
         return facilityIntegerMap;
+    }
+    public static void writeListBookingtoCSV(Set<Booking> bookingSet,String pathFile,boolean append){
+        List<String> stringList = new ArrayList<>();
+        for (Booking b : bookingSet) {
+            stringList.add(b.getInfoToCSV());
+        }
+        writeObjectToCSV(stringList,pathFile,append);
+    }
+    public static  Map<Facility, Integer> readListBookingToCSV(String pathFile) {
+        Set<Booking> bookingSet =  new TreeSet<>(new BookingComparator());
+        List<String> strings = readObjectToCSV(pathFile);
+        String[] array;
+        for (int i = 0; i < strings.size(); i++) {
+            array = strings.get(i).split(",");
+            bookingSet.add(new Booking(array[0],LocalDate.parse(array[1]),LocalDate.parse(array[2]),Double.parseDouble(array[3]),Integer.parseInt(array[4]) , array[5],array[6],Integer.parseInt(array[7])),Integer.parseInt(array[8]));
+        }
+        return bookingSet;
     }
 }
