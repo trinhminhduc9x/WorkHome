@@ -18,12 +18,13 @@ public class BookingServiceImpl implements BookingService {
     private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/House.csv";
     private static final String PATH_FILE_ROOM = "src/module_casestudy/data/Room.csv";
     private static final String PATH_FILE_CUSTOMER = "src/module_casestudy/data/Customer.csv";
-    private static final String PATH_FILE = "src/module_casestudy/data/Booking.csv";
-    private static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+    private static final String PATH_FILE = "src/module_casestudy/data/Booking.txt";
+    //    private static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
     private static final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void display() {
+        Set<Booking> bookingSet = ReadAndWriteCSV.readBooking(PATH_FILE);
         if (bookingSet.isEmpty()) {
             System.out.println("Chưa có dữ liệu, mời bạn thêm vào.");
         } else {
@@ -35,9 +36,10 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void add() {
+        Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
         int id = 1;
         if (!bookingSet.isEmpty()) {
-            id = bookingSet.size();
+            id = bookingSet.size() + 1;
         }
 
         LocalDate dateNow = LocalDate.now();
@@ -82,11 +84,11 @@ public class BookingServiceImpl implements BookingService {
         } while (!check);
 
 
-        String customer = chooseCustomer();
-        String facility = chooseFacility();
+        Customer customer = chooseCustomer();
+        Facility facility = chooseFacility();
         Booking booking = new Booking(id, startDay, endDay, customer, facility);
         bookingSet.add(booking);
-        ReadAndWriteCSV.writeListBookingtoCSV(bookingSet, PATH_FILE, false);
+        ReadAndWriteCSV.writeBooking(bookingSet, PATH_FILE);
         System.out.println("Đã booking thành công. ");
     }
 
@@ -96,7 +98,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-    public static String chooseCustomer() {
+    public static Customer chooseCustomer() {
 
         List<Customer> customerList = ReadAndWriteCSV.readCustomerList(PATH_FILE_CUSTOMER);
         System.out.println(" danh sách khách hàng ");
@@ -112,7 +114,7 @@ public class BookingServiceImpl implements BookingService {
                 if (id.equals(customer.getId())) {
                     check = true;
                     System.out.println(customer);
-                    return customer.getInfoToCSV();
+                    return customer;
                 }
             }
             if (!check) {
@@ -123,7 +125,7 @@ public class BookingServiceImpl implements BookingService {
         return null;
     }
 
-    public static String chooseFacility() {
+    public static Facility chooseFacility() {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
         Map<Facility, Integer> facilityVilla = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_VILLA);
         Set<Facility> keySetV = facilityVilla.keySet();
@@ -153,7 +155,7 @@ public class BookingServiceImpl implements BookingService {
             for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
                 if (id.equals(entry.getKey().getIdService())) {
                     check = false;
-                    return entry.getKey().getInfoToCSV();
+                    return entry.getKey();
                 }
             }
             if (check) {
