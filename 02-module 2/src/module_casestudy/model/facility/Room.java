@@ -32,7 +32,7 @@ public class Room extends Facility {
     public String toString() {
         return "Room{" +
                 super.toString() +
-                "freeService='" + freeService + '\'' +
+                " ;freeService='" + freeService + '\'' +
                 '}';
     }
 }

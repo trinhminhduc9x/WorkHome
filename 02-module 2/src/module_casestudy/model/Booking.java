@@ -10,13 +10,13 @@ public class Booking extends Person {
     private int idBooking;
     private LocalDate startDay;
     private LocalDate endDay;
-    private Customer customer;
-    private Facility facility;
+    private String customer;
+    private String facility;
 
     public Booking() {
     }
 
-    public Booking(int idBooking, LocalDate startDay, LocalDate endDay, Customer customer, Facility facility) {
+    public Booking(int idBooking, LocalDate startDay, LocalDate endDay, String customer, String facility) {
         this.idBooking = idBooking;
         this.startDay = startDay;
         this.endDay = endDay;
@@ -24,7 +24,7 @@ public class Booking extends Person {
         this.facility = facility;
     }
 
-    public Booking(String id, String name, LocalDate dateOfBirth, String gender, String idNumber, String phoneNumber, String email, int idBooking, LocalDate startDay, LocalDate endDay, Customer customer, Facility facility) {
+    public Booking(String id, String name, LocalDate dateOfBirth, String gender, String idNumber, String phoneNumber, String email, int idBooking, LocalDate startDay, LocalDate endDay, String customer, String facility) {
         super(id, name, dateOfBirth, gender, idNumber, phoneNumber, email);
         this.idBooking = idBooking;
         this.startDay = startDay;
@@ -32,8 +32,6 @@ public class Booking extends Person {
         this.customer = customer;
         this.facility = facility;
     }
-
-
 
     public String getInfoToCSV() {
         return this.idBooking + "," + this.startDay + "," + this.endDay + "," + this.customer + "," + this.facility ;
@@ -63,19 +61,19 @@ public class Booking extends Person {
         this.endDay = endDay;
     }
 
-    public Customer getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 
-    public Facility getFacility() {
+    public String getFacility() {
         return facility;
     }
 
-    public void setFacility(Facility facility) {
+    public void setFacility(String facility) {
         this.facility = facility;
     }
 

@@ -137,62 +137,76 @@ public class ReadAndWriteCSV {
         return facilityIntegerMap;
     }
 
-//    public static void writeListBookingtoCSV(Set<Booking> bookingSet, String pathFile, boolean append) {
-//        List<String> stringList = new ArrayList<>();
-//        for (Booking b : bookingSet) {
-//            stringList.add(b.getInfoToCSV());
-//        }
-//        writeObjectToCSV(stringList, pathFile, append);
-//    }
-
-    public static void writeBooking( Set<Booking> bookingSet, String pathFile) {
-        File file = new File(pathFile);
-        FileOutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-        try {
-            fileOutputStream = new FileOutputStream(file);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(bookingSet);
-        } catch (IOException e) {
-            System.err.println("File lỗi rồi haha ");
-            e.printStackTrace();
-        } finally {
-            try {
-
-                fileOutputStream.close();
-                objectOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public static void writeBookingtoCSV(Set<Booking> bookingSet, String pathFile, boolean append) {
+        List<String> stringList = new ArrayList<>();
+        for (Booking b : bookingSet) {
+            stringList.add(b.getInfoToCSV());
         }
+        writeObjectToCSV(stringList, pathFile, append);
     }
-   public static Set<Booking> readBooking(String pathFile) {
+
+    public static Set<Booking> readBookingtoCSV(String pathFile) {
         Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
-        File file = new File(pathFile);
-        FileInputStream fileInputStream =null;
-        ObjectInputStream objectInputStream = null;
-        try {
-            if (file.length()>0){
-                fileInputStream= new FileInputStream(file);
-                objectInputStream = new ObjectInputStream(fileInputStream);
-                bookingSet = (Set<Booking>) objectInputStream.readObject();
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("File không tồn tại");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (file.length()>0){
-                    fileInputStream.close();
-                    objectInputStream.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        List<String> strings = readObjectToCSV(pathFile);
+        String[] array;
+        for (int i = 0; i < strings.size(); i++) {
+            array = strings.get(i).split(",");
+            bookingSet.add(new Booking(Integer.parseInt(array[0]),LocalDate.parse(array[1]),LocalDate.parse(array[2]),array[3],array[4]));
         }
         return bookingSet;
     }
+
+
+
+//    public static void writeBooking(Set<Booking> bookingSet, String pathFile) {
+//        File file = new File(pathFile);
+//        FileOutputStream fileOutputStream = null;
+//        ObjectOutputStream objectOutputStream = null;
+//        try {
+//            fileOutputStream = new FileOutputStream(file);
+//            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//            objectOutputStream.writeObject(bookingSet);
+//        } catch (IOException e) {
+//            System.err.println("File lỗi rồi haha ");
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//
+//                fileOutputStream.close();
+//                objectOutputStream.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+//    public static Set<Booking> readBooking(String pathFile) {
+//        Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+//        File file = new File(pathFile);
+//        FileInputStream fileInputStream = null;
+//        ObjectInputStream objectInputStream = null;
+//        try {
+//            if (file.length() > 0) {
+//                fileInputStream = new FileInputStream(file);
+//                objectInputStream = new ObjectInputStream(fileInputStream);
+//                bookingSet = (Set<Booking>) objectInputStream.readObject();
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.err.println("File không tồn tại");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (file.length() > 0) {
+//                    fileInputStream.close();
+//                    objectInputStream.close();
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return bookingSet;
+//    }
 }

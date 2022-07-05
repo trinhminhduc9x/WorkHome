@@ -18,13 +18,13 @@ public class BookingServiceImpl implements BookingService {
     private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/House.csv";
     private static final String PATH_FILE_ROOM = "src/module_casestudy/data/Room.csv";
     private static final String PATH_FILE_CUSTOMER = "src/module_casestudy/data/Customer.csv";
-    private static final String PATH_FILE = "src/module_casestudy/data/Booking.txt";
+    private static final String PATH_FILE = "src/module_casestudy/data/Booking.csv";
     //    private static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
     private static final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void display() {
-        Set<Booking> bookingSet = ReadAndWriteCSV.readBooking(PATH_FILE);
+        Set<Booking> bookingSet = ReadAndWriteCSV.readBookingtoCSV(PATH_FILE);
         if (bookingSet.isEmpty()) {
             System.out.println("Chưa có dữ liệu, mời bạn thêm vào.");
         } else {
@@ -37,9 +37,10 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void add() {
         Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+        Set<Booking> bookingSet1 = ReadAndWriteCSV.readBookingtoCSV(PATH_FILE);
         int id = 1;
-        if (!bookingSet.isEmpty()) {
-            id = bookingSet.size() + 1;
+        if (!bookingSet1.isEmpty()) {
+            id = bookingSet1.size() + 1;
         }
 
         LocalDate dateNow = LocalDate.now();
@@ -84,11 +85,11 @@ public class BookingServiceImpl implements BookingService {
         } while (!check);
 
 
-        Customer customer = chooseCustomer();
-        Facility facility = chooseFacility();
+        String customer = chooseCustomer();
+        String facility = chooseFacility();
         Booking booking = new Booking(id, startDay, endDay, customer, facility);
         bookingSet.add(booking);
-        ReadAndWriteCSV.writeBooking(bookingSet, PATH_FILE);
+        ReadAndWriteCSV.writeBookingtoCSV(bookingSet, PATH_FILE,true);
         System.out.println("Đã booking thành công. ");
     }
 
@@ -98,7 +99,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
 
-    public static Customer chooseCustomer() {
+    public static String chooseCustomer() {
 
         List<Customer> customerList = ReadAndWriteCSV.readCustomerList(PATH_FILE_CUSTOMER);
         System.out.println(" danh sách khách hàng ");
@@ -114,7 +115,7 @@ public class BookingServiceImpl implements BookingService {
                 if (id.equals(customer.getId())) {
                     check = true;
                     System.out.println(customer);
-                    return customer;
+                    return customer.toString();
                 }
             }
             if (!check) {
@@ -125,7 +126,7 @@ public class BookingServiceImpl implements BookingService {
         return null;
     }
 
-    public static Facility chooseFacility() {
+    public static String chooseFacility() {
         Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
         Map<Facility, Integer> facilityVilla = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_VILLA);
         Set<Facility> keySetV = facilityVilla.keySet();
@@ -147,7 +148,7 @@ public class BookingServiceImpl implements BookingService {
         for (Map.Entry<Facility, Integer> f : facilityIntegerMap.entrySet()) {
             System.out.println(f.getKey().toString());
         }
-        System.out.println(" nhập tên dịch vụ cần chọn ");
+        System.out.println(" nhập id dịch vụ cần chọn ");
         boolean check = true;
 
         String id = scanner.nextLine();
@@ -155,7 +156,7 @@ public class BookingServiceImpl implements BookingService {
             for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
                 if (id.equals(entry.getKey().getIdService())) {
                     check = false;
-                    return entry.getKey();
+                    return entry.getKey().toString();
                 }
             }
             if (check) {

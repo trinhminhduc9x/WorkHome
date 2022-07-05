@@ -43,8 +43,8 @@ public class House extends Facility{
     public String toString() {
         return "House{" +
                 super.toString() +
-                "roomStandard='" + roomStandard + '\'' +
-                ", numOfFloor=" + numOfFloor +
+                ";roomStandard='" + roomStandard + '\'' +
+                ";numOfFloor=" + numOfFloor +
                 '}';
     }
 }
