@@ -16,6 +16,7 @@ public class Check {
     private static final String IDNAME_REGEX = "^\\d{9}||\\d{12}$";
     private static final String SAlARY_REGEX = "^\\d+$";
     private static final String NAME_REGEX = "^[A-Z][a-z]+(\\s[A-Z][a-z]+)+$";
+    private static final String NAME_FACILITY_REGEX = "^[A-Z][a-z]+(\\s[A-Z][a-z]+)+$";
     private static final List<Employee> employeeList = ReadAndWriteCSV.readEmployeeList(PATH_FILE_EMPLOYEE);
     private static final List<Customer> customerList = ReadAndWriteCSV.readCustomerList(PATH_FILE_CUSTOMER);
 

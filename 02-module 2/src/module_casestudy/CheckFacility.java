@@ -16,6 +16,7 @@ public class CheckFacility {
     private static final String PATH_FILE_ROOM = "src/module_casestudy/data/Room.csv";
     private static final String PATH_FILE_HOUSE = "src/module_casestudy/data/House.csv";
     private static final String NAME_REGEX = "^[A-Z](\\w+||\\s||\\w+)+$";
+    private static final String ID_NAME_REGEX = "^(SVVL-)\\d{4}$";
     private static final Map<Facility, Integer> facilityVillaIntegerMap = ReadAndWriteCSV.readListFacilityVillaToCSV(PATH_FILE_VILLA);
     private static final Map<Facility, Integer> facilityRoomIntegerMap = ReadAndWriteCSV.readListFacilityRoomToCSV(PATH_FILE_ROOM);
     private static final Map<Facility, Integer> facilityHouseIntegerMap = ReadAndWriteCSV.readListFacilityHouseToCSV(PATH_FILE_HOUSE);
